@@ -27,6 +27,7 @@ func main() {
 		"https://golang.org",
 		"https://cryptobubbles.net",
 		"https://youtube.com",
+		"https://google.com",
 	}
 
 	ch := make(chan string) // create go channel to store string
