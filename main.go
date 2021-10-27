@@ -36,6 +36,8 @@ func main() {
 		go checkLink(link, ch)
 	}
 
-	// blocking channel, if main routine got a value, it will exit
-	fmt.Println(<-ch) // wait for a value, when get one, print it out
+	// every iteration is blocking channel, execute one by one
+	for i := 0; i < len(links); i++ {
+		fmt.Println(<-ch)
+	}
 }
