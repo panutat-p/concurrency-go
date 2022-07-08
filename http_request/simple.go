@@ -35,11 +35,17 @@ func SendAsyncReq() {
 		"https://google.com",
 	}
 
+	ch := make(chan string)
+
 	for _, link := range links {
 		link := link
-		go func() {
+		go func(link string, ch chan string) {
 			r, _ := http.Get(link)
-			fmt.Println(r)
-		}()
+			ch <- fmt.Sprintf("%v %v", link, r.Status)
+		}(link, ch)
+	}
+
+	for i := 0; i < len(links); i++ {
+		fmt.Println(<-ch) // block
 	}
 }
