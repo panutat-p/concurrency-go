@@ -1,10 +1,9 @@
 package main
 
 import (
-	"github.com/panutat-p/learn-go-routine/repeating_requests"
+	"github.com/panutat-p/learn-go-routine/http_request"
 )
 
 func main() {
-	//simple_requests.Run()
-	repeating_requests.Run()
+	http_request.SendSyncReq()
 }
