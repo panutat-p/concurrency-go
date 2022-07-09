@@ -8,6 +8,10 @@ func TestSendSyncReq(t *testing.T) {
 	SendSyncReq()
 }
 
-func TestSendAsyncReq(t *testing.T) {
-	SendAsyncReq()
+func TestSendAsyncReqChannel(t *testing.T) {
+	SendAsyncReqChannel()
+}
+
+func TestSendAsyncReqRoutine(t *testing.T) {
+	SendAsyncReqRoutine()
 }

@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	http_request.SendAsyncReq()
+	http_request.SendAsyncReqChannel()
 }
