@@ -2,6 +2,7 @@ package http_request
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"sync"
 )
@@ -24,33 +25,6 @@ func SendSyncReq() {
 	}
 }
 
-func SendAsyncReqChannel() {
-	links := []string{
-		"https://amazon.com",
-		"https://facebook.com",
-		"https://stackoverflow.com",
-		"https://example.com",
-		"https://golang.org",
-		"https://cryptobubbles.net",
-		"https://youtube.com",
-		"https://google.com",
-	}
-
-	ch := make(chan string)
-
-	for _, link := range links {
-		link := link
-		go func(ch chan string) {
-			r, _ := http.Get(link)
-			ch <- fmt.Sprintf("%v %v", link, r.Status)
-		}(ch)
-	}
-
-	for i := 0; i < len(links); i++ {
-		fmt.Println(<-ch) // block
-	}
-}
-
 func SendAsyncReqRoutine() {
 	wg := &sync.WaitGroup{}
 
@@ -62,18 +36,22 @@ func SendAsyncReqRoutine() {
 		"https://golang.org",
 		"https://cryptobubbles.net",
 		"https://youtube.com",
-		"https://google.com",
+		"https://googles.com",
 	}
 
 	wg.Add(len(links))
 
 	for _, link := range links {
 		link := link
-		go func(wg *sync.WaitGroup) {
-			r, _ := http.Get(link)
+		go func() {
+			defer wg.Done()
+			r, err := http.Get(link)
+			if err != nil {
+				log.Println(err)
+				return
+			}
 			fmt.Println(link, r.Status)
-			wg.Done()
-		}(wg)
+		}()
 	}
 	wg.Wait() // block
 }
