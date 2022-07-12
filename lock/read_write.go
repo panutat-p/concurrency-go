@@ -16,14 +16,14 @@ func ReadAndWrite() {
 	go func() {
 		for {
 			mux.Lock()
-			count += value
+			count += value // read
 			mux.Unlock()
 		}
 	}()
 
 	for i := 0; i < 10; i += 1 {
 		mux.Lock()
-		value = i
+		value = i // write
 		mux.Unlock()
 	}
 }
