@@ -1,4 +1,4 @@
-package lock
+package mutual_exclusion_lock
 
 import (
 	"fmt"
