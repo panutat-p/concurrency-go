@@ -11,14 +11,14 @@ func GetFibonacci() {
 	go infiniteFibo(ch)
 
 	for i := 0; i < 10; i += 1 {
-		fmt.Println(<-ch) // read fibo sequence from chanel
+		fmt.Println(<-ch) // read fibo sequence from channel
 	}
 }
 
 func infiniteFibo(ch chan int) {
 	a, b := 0, 1 // go routine hold these value
 	for {
-		ch <- a // write fibo sequence to chanel
+		ch <- a // write fibo sequence to channel
 		a, b = b, a+b
 	}
 }

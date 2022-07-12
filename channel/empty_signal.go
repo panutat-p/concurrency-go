@@ -11,8 +11,8 @@ func SendSignalByChannel() {
 
 	go increment(ch, qCh)
 
-	for i := 0; i < 10; i += 1 {
-		fmt.Println(<-ch) // do nothing 10 times
+	for i := 0; i < 10; i += 1 { // do nothing 10 times
+		<-ch
 	}
 	qCh <- struct{}{} // indicate that the job has done
 }
