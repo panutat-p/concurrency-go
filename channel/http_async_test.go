@@ -1,4 +1,4 @@
-package http_request
+package channel
 
 import "testing"
 

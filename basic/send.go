@@ -1,4 +1,4 @@
-package http_request
+package basic
 
 import (
 	"fmt"
@@ -39,9 +39,8 @@ func SendAsyncReqRoutine() {
 		"https://googles.com",
 	}
 
-	wg.Add(len(links))
-
 	for _, link := range links {
+		wg.Add(1)
 		link := link
 		go func() {
 			defer wg.Done()

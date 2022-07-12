@@ -1,4 +1,4 @@
-package http_request
+package basic
 
 import (
 	"testing"

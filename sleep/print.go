@@ -13,14 +13,14 @@ func PrintForOneSecond() {
 
 func printMinus() {
 	for {
-		time.Sleep(100 * time.Millisecond) // block
+		time.Sleep(100 * time.Millisecond)
 		fmt.Print("-")
 	}
 }
 
 func printPlus() {
 	for {
-		time.Sleep(200 * time.Millisecond) // block
+		time.Sleep(200 * time.Millisecond)
 		fmt.Print("+")
 	}
 }
