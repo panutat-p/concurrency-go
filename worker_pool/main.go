@@ -7,7 +7,7 @@ import (
 
 func main() {
 	const (
-		MaxJob    = 10
+		MaxJob    = 9
 		MaxWorker = 3
 	)
 
@@ -29,8 +29,8 @@ func main() {
 
 	// Collect results
 	for i := 1; i <= MaxJob; i++ {
-		<-results
-		fmt.Println("🟩")
+		r := <-results
+		fmt.Println("🍌", r)
 	}
 }
 
@@ -38,6 +38,6 @@ func start(id int, jobs <-chan int, results chan<- int) {
 	for i := range jobs {
 		fmt.Println("🐵 worker", id, "job", i)
 		time.Sleep(time.Second)
-		results <- i * 2
+		results <- i * 100
 	}
 }
