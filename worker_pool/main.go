@@ -7,7 +7,7 @@ import (
 
 func main() {
 	const (
-		MaxJob    = 5
+		MaxJob    = 10
 		MaxWorker = 3
 	)
 
