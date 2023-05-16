@@ -18,7 +18,7 @@ func main() {
 
 	// Start workers
 	for i := 1; i <= MaxWorker; i++ {
-		go do(i, jobs, results)
+		go start(i, jobs, results)
 	}
 
 	// Send jobs to workers
@@ -34,7 +34,7 @@ func main() {
 	}
 }
 
-func do(id int, jobs <-chan int, results chan<- int) {
+func start(id int, jobs <-chan int, results chan<- int) {
 	for i := range jobs {
 		fmt.Println("🐵 worker", id, "job", i)
 		time.Sleep(time.Second)
