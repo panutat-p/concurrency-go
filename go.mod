@@ -1,3 +1,3 @@
 module github.com/panutat-p/learn-go-routine
 
-go 1.18
+go 1.20
